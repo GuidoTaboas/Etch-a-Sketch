@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html bac>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href='style.css'>
+    <title>Etch-a-Sketch</title>
+</head>
+<body>
+    <h1>Etch-a-Sketch</h1>
+    <button id="openButton" onclick="openNav()">Menu</button>
+    <div id='sideNav' class='sideNav'>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <button class='colorButton' id='#000000'>Black</button>
+        <button class='colorButton' id='#FFEE00'>Yellow</button>
+        <button class='eraseButton' id='erase'>Erase</button>
+        <button class='colorButton' id='transparentButton'>Transparent</button>
+        <button class='buttonPicker'>Pick a color<input class='colorPicker' type='color' id='colorPicker'></button>
+        <div class='slideContainer'>
+            <input type="range" min="4" max="76" value="25" class="slider" id='slideBar'>
+        </div> 
+    </div>
+    <div class='mainDiv'></div>  
+</body>
+<script src='script.js'></script>
+</html>

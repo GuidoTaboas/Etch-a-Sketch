@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 
-<html bac>
+<html>
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href='style.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet"> 
     <title>Etch-a-Sketch</title>
 </head>
 <body>
-    <h1>Etch-a-Sketch</h1>
-    <button id="openButton" onclick="openNav()">Menu</button>
+    <div>
+        <h1>Etch-a-Sketch</h1>
+        <h2>Let your imagination fly</h2>
+    </div>
+    <a id="openButton" onclick="openNav()">Menu</a>
     <div id='sideNav' class='sideNav'>
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <button class='colorButton' id='#000000'>Black</button>
-        <button class='colorButton' id='#FFEE00'>Yellow</button>
-        <button class='eraseButton' id='erase'>Erase</button>
-        <button class='colorButton' id='transparentButton'>Transparent</button>
-        <button class='buttonPicker'>Pick a color<input class='colorPicker' type='color' id='colorPicker'></button>
+        <a class='colorButton' id='#000000'>Black</a>
+        <a class='colorButton' id='#FFEE00'>Yellow</a>
+        <a class='colorButton' id='rainbow'>Rainbow</a>
+        <a class='eraseButton' id='erase'>White</a>
+        <a class='colorButton' id='transparentButton'>Transparent</a>
+        <div class='buttonPicker'>
+            <span class='colorPickerText'>Pick a color</span><input class='colorPicker' type='color' id='colorPicker'>
+        </div>
         <div class='slideContainer'>
             <input type="range" min="4" max="76" value="25" class="slider" id='slideBar'>
         </div> 

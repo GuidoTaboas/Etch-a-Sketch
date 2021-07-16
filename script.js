@@ -3,7 +3,9 @@ const COLOR_BUTTONS = document.getElementsByClassName('colorButton');
 const COLOR_PICKER = document.querySelector('#colorPicker');
 const ERASE_BUTTON = document.querySelector('.eraseButton');
 const TRANSPARENT_BUTTON = document.querySelector('#transparentButton')
+const RAINBOW_BUTTON = document.querySelector('#rainbow')
 const SLIDER = document.querySelector('.slider')
+let mouseDown = false
 
 let color = 'black';
 let sideQuantity = 25; /*Number(prompt('Choose DIV size'))*/
@@ -23,6 +25,7 @@ function createMainDiv() {
     }
 }
 
+//Choose color to paint
 function chooseColor(color) {
     const INNER_DIV = document.querySelectorAll('#innerDiv');
     for (let i = 0; i < INNER_DIV.length; i++) {
@@ -32,6 +35,29 @@ function chooseColor(color) {
     }
 }
 
+//Rainbow Sequence
+
+function rainbow() {
+    const INNER_DIV = document.querySelectorAll('#innerDiv')
+    const rainbowArray =[ 
+        'rgb(255, 0, 0)',
+	 	'rgb(255, 165, 0)',
+		'rgb(255, 255, 0)',
+	 	'rgb(0, 128, 0)',
+	 	'rgb(0, 0, 255)',
+	 	'rgb(75, 0, 130)',
+	 	'rgb(238, 130, 238)'
+    ]
+    for (let i = 0; i < INNER_DIV.length; i++) {
+        INNER_DIV[i].addEventListener('mouseover', function(e) {
+            let color = rainbowArray[Math.floor(Math.random() * rainbowArray.length)]
+            INNER_DIV[i].style.backgroundColor = color;
+        })
+    }
+}
+
+
+//Set whole background to a color
 function wholeColor(color) {
     const INNER_DIV = document.querySelectorAll('#innerDiv')
     for (let i = 0; i < INNER_DIV.length; i++) {
@@ -39,42 +65,53 @@ function wholeColor(color) {
     }
 }
 
+//Set backgroung to white
 function eraseColor() {
     const INNER_DIV = document.querySelectorAll('#innerDiv')
     for (let i = 0; i < INNER_DIV.length; i++) {
         INNER_DIV[i].style.backgroundColor = 'white';
-    }
-}
+    };
+};
 
-for (let i = 0; i < COLOR_BUTTONS.length; i++) {
-    COLOR_BUTTONS[i].addEventListener('click', function(e) {  
-        chooseColor(e.target.id);
-    })
-}
-
-
-ERASE_BUTTON.addEventListener('click', eraseColor)
-TRANSPARENT_BUTTON.addEventListener('click', wholeColor)
-
-COLOR_PICKER.addEventListener('change', function(e) {
-    chooseColor(e.target.value)
-})
-
+//Slider event listener
 SLIDER.addEventListener('mouseup', function(e) {
     sideQuantity = e.target.value
     MAIN_DIV.innerHTML = ''
-    createMainDiv()
-    chooseColor('black')
-})
+    createMainDiv();
+    chooseColor('black');
+});
 
+//Open and close lateral nav bar
 function openNav() {
     document.getElementById("sideNav").style.width = "250px";
-  }
+    document.getElementById('openButton').style.visibility = 'hidden'
+  };
 
 function closeNav() {
 document.getElementById("sideNav").style.width = "0";
-} 
+document.getElementById('openButton').style.visibility = 'visible'
+};
 
+/*document.addEventListener('mousedown', function () {
+    mouseDown = true;
+});
+
+document.addEventListener('mouseup', function () {
+    mouseDown = false;
+});
+
+
+function paint (color) {
+    const INNER_DIV = document.querySelectorAll('#innerDiv');
+    INNER_DIV.forEach(INNER_DIV1 => INNER_DIV1.addEventListener('mouseenter', function(e){
+        if (mouseDown) {
+            e.target.style.backgroundColor = color;
+        }
+    }));
+    INNER_DIV.forEach(INNER_DIV1 => INNER_DIV1.addEventListener('mousedown', function(e){
+        e.target.style.backgroundColor = color;
+    }))
+}*/
 
 if (sideQuantity) {
     while (MAIN_DIV.firstChild) {
@@ -82,4 +119,18 @@ if (sideQuantity) {
     }
     createMainDiv()
     chooseColor(color)
+}
+
+ERASE_BUTTON.addEventListener('click', eraseColor)
+TRANSPARENT_BUTTON.addEventListener('click', wholeColor)
+RAINBOW_BUTTON.addEventListener('click', rainbow)
+
+COLOR_PICKER.addEventListener('change', function(e) {
+    chooseColor(e.target.value)
+})
+
+for (let i = 0; i < COLOR_BUTTONS.length; i++) {
+    COLOR_BUTTONS[i].addEventListener('click', function(e) {  
+        chooseColor(e.target.id);
+    })
 }

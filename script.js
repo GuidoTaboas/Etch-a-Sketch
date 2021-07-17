@@ -5,6 +5,7 @@ const ERASE_BUTTON = document.querySelector('.eraseButton');
 const TRANSPARENT_BUTTON = document.querySelector('#transparentButton')
 const RAINBOW_BUTTON = document.querySelector('#rainbow')
 const SLIDER = document.querySelector('.slider')
+const defaultSliderValue = 25
 let mouseDown = false
 
 let color = 'black';
@@ -56,6 +57,9 @@ function rainbow() {
     }
 }
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
 //Set whole background to a color
 function wholeColor(color) {
@@ -81,14 +85,20 @@ SLIDER.addEventListener('mouseup', function(e) {
     chooseColor('black');
 });
 
+function resetSlider() {
+    SLIDER.value = defaultSliderValue
+}
+
 //Open and close lateral nav bar
 function openNav() {
-    document.getElementById("sideNav").style.width = "250px";
     document.getElementById('openButton').style.visibility = 'hidden'
+    document.getElementById("sideNav").style.width = "200px";
+    
   };
 
-function closeNav() {
+async function closeNav() {
 document.getElementById("sideNav").style.width = "0";
+await sleep(300)
 document.getElementById('openButton').style.visibility = 'visible'
 };
 

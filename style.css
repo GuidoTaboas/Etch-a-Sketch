@@ -33,7 +33,6 @@ h2 {
   right: 2.5em;
   top: 5.2em;
   font-size: 1.7em;
-  border: 0.1em solid rgb(32, 41, 62);
   border-radius: 0.12em;
   box-sizing: border-box;
   text-decoration: none;
@@ -51,7 +50,11 @@ h2 {
   border-color: #FFFFFF;
   cursor: pointer;
 }
+
 .sideNav {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(9, 4.5em) 3fr;
   height: 100%;
   width: 0;
   position: fixed;
@@ -61,8 +64,15 @@ h2 {
   overflow: hidden;
   padding-top: 60px;
   transition: 0.5s;
-  background-color: rgb(32, 41, 62, 0.6);
+  background-color: rgba(179, 177, 233, 0.28);
   opacity: 0.7;
+}
+
+.sideNavText {
+  font-size: 1.4em;
+  align-self: center;
+  margin: 0 0 0 0.3em;
+  color: #01170f; 
 }
 
 .sideNav .closebtn {
@@ -79,6 +89,53 @@ h2 {
   opacity: 1;
 }
 
+.colorButton, .eraseButton{
+  align-self: center;
+  margin: 0em 0em 0em 1.8em;
+  font-size: 1.7em;
+  border-radius: 0.12em;
+  height: auto;
+  width: 75%;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #01170f;
+  text-shadow: 0 0.04em 0.04em rgba(0,0,0, 0.35);
+  background-color: rgba(0,0,0, 0.35);
+  text-align: center;
+  transition: all 0.15s;
+}
+
+.buttonPicker {
+display: flex;
+justify-content: space-around;
+align-items: center;
+margin: 0.5em 0.5em 0.5em 0.5em;
+padding: 1.5em 0.4em;
+font-size: 1.7em;
+border-radius: 0.12em;
+box-sizing: border-box;
+text-decoration: none;
+color: #000000;
+text-shadow: 0 0.04em 0.04em rgba(0,0,0, 0.35);
+background-color: rgba(0,0,0, 0.35);
+transition: all 0.15s;
+}
+
+.colorButton:hover, .eraseButton:hover, .buttonPicker:hover{
+  text-shadow: 0 0 2em rgba(255, 255, 255, 1);
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+  cursor: pointer;
+}
+
+.colorPicker {
+  margin: 0 0 0 0.5em;
+}
+
+.colorPickerText {
+  text-align: center;
+}
+
 .mainDiv {
     display: grid;
     width: 60em;
@@ -86,39 +143,6 @@ h2 {
     border: 1px solid black;
     box-shadow: 5px 4px 12px 3px rgba(0,0,0,0.5);
     margin: 5em 0px 0px 10em;
-}
-
-.colorButton, .eraseButton{
-    margin: 0.5em 0.5em 0em 0.5em;
-    display: inline-block;
-    padding: 0.4em 1em;
-    font-size: 1.7em;
-    border: 0.1em solid #000;
-    border-radius: 0.12em;
-    box-sizing: border-box;
-    text-decoration: none;
-    color: #000000;
-    text-shadow: 0 0.04em 0.04em rgba(0,0,0, 0.35);
-    background-color: rgba(0,0,0, 0.35);
-    text-align: center;
-    transition: all 0.15s;
-}
-
-.buttonPicker {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 0.5em 0.5em 0.5em 0.5em;
-  padding: 0.4em 1em;
-  font-size: 1.7em;
-  border: 0.1em solid #000;
-  border-radius: 0.12em;
-  box-sizing: border-box;
-  text-decoration: none;
-  color: #000000;
-  text-shadow: 0 0.04em 0.04em rgba(0,0,0, 0.35);
-  background-color: rgba(0,0,0, 0.35);
-  transition: all 0.15s;
 }
 
 .colorButton:hover, .eraseButton:hover, .buttonPicker:hover{
@@ -139,16 +163,24 @@ h2 {
 .slider {
     -webkit-appearance: none;  /* Override default CSS styles */
     appearance: none;
-    height: 25px; /* Specified height */
-    background: #d3d3d3; /* Grey background */
+    position: relative;
+    top: 41.9em;
+    height: 2em; /* Specified height */
+    background: #475f56; /* Grey background */
     outline: none; /* Remove outline */
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    opacity: 0.6; /* Set transparency (for mouse-over effects on hover) */
     -webkit-transition: .2s; /* 0.2 seconds transition on hover */
     transition: opacity .2s;
-    margin: 0 0 0 0.6em;
+    margin-left: -3em;
     cursor: pointer;
+    transform: rotatez(90deg);
+    border-radius: 0.9em;
   }
 
+  .sliderText {
+    position: relative;
+    top: 41.9em;
+  }
   .slider:hover {
     opacity: 1; /* Fully shown on mouse-over */
   }
@@ -156,16 +188,17 @@ h2 {
   .slider::-moz-slider-thumb {
     -moz-appearance: none; /* Override default look */
     appearance: none;
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #04AA6D; /* Green background */
+    width: 2em; /* Set a specific slider handle width */
+    height: 2em; /* Slider handle height */
+    background: #c0cbad; /* Green background */
     cursor: pointer; /* Cursor on hover */
   }
 
   .slider::-moz-range-thumb {
-    width: 25px; /* Set a specific slider handle width */
-    height: 25px; /* Slider handle height */
-    background: #04AA6D; /* Green background */
+    width: 1.8em; /* Set a specific slider handle width */
+    height: 1.8em; /* Slider handle height */
+    background: #c0cbad; /* Green background */
     cursor: pointer; /* Cursor on hover */
+    border-radius: 1em;
   }
 

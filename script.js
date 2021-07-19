@@ -91,15 +91,14 @@ function resetSlider() {
 
 //Open and close lateral nav bar
 function openNav() {
-    document.getElementById('openButton').style.visibility = 'hidden'
-    document.getElementById("sideNav").style.width = "200px";
-    
+    document.getElementById('openButton').style.opacity = '0.1';
+    document.getElementById("sideNav").style.width = "200px"; 
   };
 
 async function closeNav() {
 document.getElementById("sideNav").style.width = "0";
 await sleep(300)
-document.getElementById('openButton').style.visibility = 'visible'
+document.getElementById('openButton').style.opacity = '1'
 };
 
 /*document.addEventListener('mousedown', function () {

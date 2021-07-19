@@ -3,13 +3,14 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href='style.css'>
+    <link rel="stylesheet" href='css styles/style.css'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet"> 
     <title>Etch-a-Sketch</title>
 </head>
-<body onload='resetSlider()'>
+<body onload='resetSlider()' id="body">
+    <div class="backgroundImg" id="backgroundImg"></div>
     <div>
         <h1>Etch-a-Sketch</h1>
         <h2>Let your imagination fly</h2>
@@ -18,8 +19,8 @@
     <div id='sideNav' class='sideNav'>
         <span class='sideNavText'>Colors</span>
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a class='colorButton' id='#000000'>Black</a>
-        <a class='colorButton' id='#FFEE00'>Yellow</a>
+        <a class='colorButton' id='black'>Black</a>
+        <a class='colorButton' id='yellow'>Yellow</a>
         <a class='colorButton' id='rainbow'>Rainbow</a>
         <span class='sideNavText'>Change Background</span>
         <a class='eraseButton' id='erase'>White</a>
